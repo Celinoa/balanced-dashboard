@@ -1,3 +1,5 @@
+document.write('<script src="https:\/\/js.balancedpayments.com\/1.1\/balanced.js"><\/script>');
+
 QUnit.testStart(function(test) {
 	var module = test.module ? test.module : '';
 	console.log('#' + module + " " + test.name + ": starting setup.");
@@ -47,6 +49,7 @@ QUnit.testStart(function(test) {
 				return Balanced.Marketplace.create().save();
 			}).then(function(marketplace) {
 				Balanced.Auth.setupGuestUserMarketplace(marketplace);
+
 				Balanced.TEST.MARKETPLACE_ID = marketplace.get('uri').split('/').pop();
 				Balanced.TEST.CUSTOMER_ID = marketplace.get('owner_customer_uri').split('/').pop();
 
